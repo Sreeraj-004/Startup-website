@@ -26,7 +26,7 @@ const Header = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center">
           {/* Combined horizontal logo */}
           <img
-            src="/Logo/BMTS text white.png"
+            src="/Logo/BMTS_web.png"
             alt="BMTS Logo"
             className="
               h-12 sm:h-14 md:h-16 lg:h-16 lg:pl-20

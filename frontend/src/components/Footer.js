@@ -31,7 +31,7 @@ const Footer = () => {
         {/* Section 1: Branding and Location - Replaced text with Logo Image */}
         <div className="flex flex-col items-center md:items-start">
           <img
-            src="/Logo/BMTS text white.png"
+            src="/Logo/BMTS_web.png"
             alt="BetaMind TechSolutions Logo"
             className="h-16 mb-4 w-auto" // Increased size to h-16 (200% of h-8)
           />
