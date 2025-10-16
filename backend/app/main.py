@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from datetime import datetime
-
+from .discord import send_discord_notification  # absolute import
 from .init_db import Base, engine, SessionLocal  # absolute imports
 from .models import Contact
 
@@ -52,6 +52,16 @@ def save_contact(data: ContactRequest, db: Session = Depends(get_db)):
         db.add(contact)
         db.commit()
         db.refresh(contact)
+
+        #send Discord notification
+        send_discord_notification({
+            "name": contact.name,
+            "email": contact.email,
+            "phone": contact.phone,
+            "role": contact.role,
+            "message": contact.message,
+            "created_at": contact.created_at,
+        })
         return {"status": "success", "message": "Contact saved successfully"}
     except Exception as e:
         db.rollback()

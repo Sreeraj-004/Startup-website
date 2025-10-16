@@ -6,6 +6,13 @@ module.exports = {
   darkMode: 'class', // enable dark mode with "dark:" classes
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+      },
+      screens: {
+      'custom': '926px',
+    },
       keyframes: {
         fadeIn: {
           '0%': { opacity: 0 },
@@ -19,6 +26,7 @@ module.exports = {
       animation: {
         fadeIn: 'fadeIn 1s ease-out forwards',
         slideUp: 'slideUp 1s ease-out forwards',
+        fadeSlow: 'fadeSlow 20s ease-in-out infinite',
       },
     },
   },

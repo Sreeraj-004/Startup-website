@@ -1,7 +1,6 @@
 // src/components/Header.js
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../logo.svg";
 
 const Header = () => {
   const navItems = ["Home", "Services", "Contact"];
@@ -22,11 +21,29 @@ const Header = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2 }}
     >
-      {/* Logo */}
-      <motion.div className="flex items-center mb-4 md:mb-0">
-        <img src={logo} alt="BetaMind Logo" className="h-12 w-12 mr-3 drop-shadow-lg" />
-        <h1 className="text-3xl font-bold text-white drop-shadow-md">BetaMind TechSolutions</h1>
-      </motion.div>
+      {/* Logo wrapper */}
+      <div className="relative w-full md:w-auto flex justify-center md:justify-start mb-4 md:mb-0 overflow-visible">
+        <div className="flex flex-col sm:flex-row items-center justify-center">
+          {/* Combined horizontal logo */}
+          <img
+            src="/Logo/BMTS text white.png"
+            alt="BMTS Logo"
+            className="
+              h-12 sm:h-14 md:h-16 lg:h-16 lg:pl-20
+              w-auto drop-shadow-lg
+              scale-[1.5] sm:scale-[1.8] md:scale-[1.5] md:pl-11
+              transition-transform
+            "
+            style={{
+              transformOrigin: "center center",
+            }}
+          />
+        </div>
+      </div>
+
+
+
+
 
       {/* Navbar */}
       <motion.nav

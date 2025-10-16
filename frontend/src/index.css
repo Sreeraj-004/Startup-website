@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400&display=swap');
+
 
 body {
   margin: 0;
@@ -27,4 +29,17 @@ code {
   background: linear-gradient(270deg, #6366f1, #8b5cf6, #ec4899, #f97316);
   background-size: 600% 600%;
   animation: gradient-breathe 20s ease infinite;
+}
+
+.fog-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05) 0%, transparent 70%),
+              radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05) 0%, transparent 70%),
+              radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 80%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: fadeSlow 20s ease-in-out infinite;
 }

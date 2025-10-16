@@ -1,0 +1,20 @@
+import requests
+
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1428241517465829437/wouKhbb0LJrVLiuHkIyACQaUTj5kySoAXi8SSoK63aeJAEJQ_IOXovJL8RJCUaPuMFWM"
+
+def send_discord_notification(contact_data: dict):
+    content = f"""
+**New Contact Received!**
+- Name: {contact_data['name']}
+- Email: {contact_data['email']}
+- Phone: {contact_data['phone']}
+- Role: {contact_data['role']}
+- Message: {contact_data['message']}
+- Time: {contact_data['created_at']}
+    """
+    data = {"content": content}
+    try:
+        response = requests.post(DISCORD_WEBHOOK_URL, json=data)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to send Discord notification: {e}")
