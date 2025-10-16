@@ -40,7 +40,7 @@ const Contact = () => {
     setLoading(true); // Start loading
 
     try {
-        const API_BASE = process.env.REACT_APP_API_URL; // '' in production, 'http://localhost:8000' in dev
+        const API_BASE = "https://startup-website-backend.onrender.com"; // '' in production, 'http://localhost:8000' in dev
         const response = await fetch(`${API_BASE}/api/contact`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
