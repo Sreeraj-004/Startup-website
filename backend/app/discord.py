@@ -1,6 +1,9 @@
 import requests
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1428241517465829437/wouKhbb0LJrVLiuHkIyACQaUTj5kySoAXi8SSoK63aeJAEJQ_IOXovJL8RJCUaPuMFWM"
+DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK_URL")
 
 def send_discord_notification(contact_data: dict):
     content = f"""

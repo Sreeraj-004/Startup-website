@@ -7,6 +7,10 @@ from datetime import datetime
 from .discord import send_discord_notification  # absolute import
 from .init_db import Base, engine, SessionLocal  # absolute imports
 from .models import Contact
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Create tables
 Base.metadata.create_all(bind=engine)
@@ -38,6 +42,17 @@ def get_db():
     finally:
         db.close()
 
+# ---------------- Contact Numbers API ----------------
+@app.get("/api/contact-numbers")
+def get_contact_numbers():
+    return {
+        "numbers": [
+            os.getenv("CONTACT_NUMBER_1"),
+            os.getenv("CONTACT_NUMBER_2")
+        ]
+    }
+
+
 @app.post("/api/contact")
 def save_contact(data: ContactRequest, db: Session = Depends(get_db)):
     try:
@@ -67,15 +82,3 @@ def save_contact(data: ContactRequest, db: Session = Depends(get_db)):
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
 
-# ---------------- Root & About ----------------
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to my portfolio backend"}
-
-@app.get("/api/about")
-def about():
-    return {
-        "name": "Sreeraj Pv",
-        "role": "Developer",
-        "description": "I build creative, performant web applications."
-    }

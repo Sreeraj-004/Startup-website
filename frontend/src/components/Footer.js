@@ -5,7 +5,7 @@ const Footer = () => {
   // Array for cleaner rendering of social/contact links
   const socialLinks = [
     {
-      href: "https://www.instagram.com/betamind4?igsh=Z2w4MjI4NmR3Mmhk",
+      href: "https://www.instagram.com/betamind.techsolutions?igsh=Z2w4MjI4NmR3Mmhk",
       Icon: Instagram,
       color: "hover:text-pink-500",
       label: "Instagram",
@@ -31,7 +31,7 @@ const Footer = () => {
         {/* Section 1: Branding and Location - Replaced text with Logo Image */}
         <div className="flex flex-col items-center md:items-start">
           <img
-            src="/Logo/BMTS text transparent.png"
+            src="/Logo/BMTS text white.png"
             alt="BetaMind TechSolutions Logo"
             className="h-16 mb-4 w-auto" // Increased size to h-16 (200% of h-8)
           />

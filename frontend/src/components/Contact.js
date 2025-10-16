@@ -40,32 +40,33 @@ const Contact = () => {
     setLoading(true); // Start loading
 
     try {
-      const response = await fetch("http://localhost:8000/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSuccessMessage(
-          `Thank you, ${formData.name}! Our team will reach out to you soon.`
-        );
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          role: "student",
-          message: "",
+        const API_BASE = process.env.REACT_APP_API_URL || ""; // '' in production, 'http://localhost:8000' in dev
+        const response = await fetch(`${API_BASE}/api/contact`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
         });
-      } else {
-        setErrorMessage("Something went wrong. Please try again later.");
+
+        if (response.ok) {
+          setSuccessMessage(
+            `Thank you, ${formData.name}! Our team will reach out to you soon.`
+          );
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            role: "student",
+            message: "",
+          });
+        } else {
+          setErrorMessage("Something went wrong. Please try again later.");
+        }
+      } catch (error) {
+        console.error(error);
+        setErrorMessage("Network error. Please try again.");
+      } finally {
+        setLoading(false); // Stop loading
       }
-    } catch (error) {
-      console.error(error);
-      setErrorMessage("Network error. Please try again.");
-    } finally {
-      setLoading(false); // Stop loading
-    }
   };
 
   return (
